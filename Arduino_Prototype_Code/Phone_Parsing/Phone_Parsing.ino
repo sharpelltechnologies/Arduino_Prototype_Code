@@ -8,14 +8,18 @@ char phone_number[13];
 void setup() {
   Serial.begin(19200); // for serial monitor
   SIM808.begin(19200); // for SIM808 shield
+  SIM808.println("AT\r");
+  SIM808.println("AT+CLIP=1\r");
+  SIM808.flush();
 }
 
 void loop() {
-  while(SIM808.available()>=50) {
-   readline(SIM808.read(), inData, 50);
-   if(myString.length() >= 24) {
-      for(i = 12; i < 23; i++) {
-         phone_number[i-12] = inData[i];
+  while(SIM808.available()>=50 && myString.length() < 38) {
+   readline(SIM808.read(), inData);
+   if(myString.length() >= 38) {
+      SIM808.println("ATH\r");
+      for(i = 27; i < 38; i++) {
+         phone_number[i-27] = inData[i];
       }
       Serial.println(phone_number);
       delay(1000);
@@ -25,7 +29,7 @@ void loop() {
   }
   
 }
-int readline(int readch, char *buffer, int len) {
+int readline(int readch, char *buffer) {
   static int pos = 0;
   int rpos;
   if(SIM808.available() > 0) {

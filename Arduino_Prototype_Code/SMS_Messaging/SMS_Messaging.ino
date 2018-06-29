@@ -21,8 +21,8 @@ void sendSMS(){         // if data is available on hardwareserial port ==> data 
     GPRS.print("AT+CMGF=1\r\n"); //sending SMS in text mode
     Serial.println("AT+CMGF=1\r\n"); 
     delay(1000);
-    GPRS.print("AT+CMGS=\"+14083482622\"\r\n"); // phone number
-    Serial.println("AT+CMGS=\"+14083482622\"\r"); 
+    GPRS.print("AT+CMGS=\"+xxxxxxx\"\r\n"); // phone number
+    Serial.println("AT+CMGS=\"+xxxxxxxx\"\r"); 
     delay(1000);
     GPRS.print("Message from Arduino: Did it work?\r"); // message
     Serial.println("Message from Arduino: Did it work?\r"); 

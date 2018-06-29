@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 SoftwareSerial sim808(7,8);
 
-char phone_no[] = "14083482622";
+char phone_no[] = "xxxxxxx";
 String data[5];
 #define DEBUG true
 String state,timegps,latitude,longitude;
